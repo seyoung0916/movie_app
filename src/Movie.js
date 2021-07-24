@@ -2,14 +2,24 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./Movie.css";
 
-function Movie({ year, title, summary, poster }) {
+function Movie({ year, title, summary, poster, genres }) {
   return (
-    <div class="movie">
+    <div className="movie">
       <img src={poster} title={title} alt={title}></img>
-      <div class="movie__data">
-        <h3 class="movie__title">{title}</h3>
-        <h3 class="movie__year">{year}</h3>
-        <p class="movie__summary">{summary} </p>
+      <div className="movie__data">
+        <h3 className="movie__title">{title}</h3>
+        <h3 className="movie__year">{year}</h3>
+        <ul className="genres">
+          {genres.map((
+            genre,
+            index // key값을 id 대신 index로 할당 (id값이 없어서)
+          ) => (
+            <li key={index} className="genres__genre">
+              {genre}
+            </li>
+          ))}
+        </ul>
+        <p className="movie__summary">{summary} </p>
       </div>
     </div>
   );
@@ -21,6 +31,7 @@ Movie.propTypes = {
   title: PropTypes.string.isRequired,
   summary: PropTypes.string.isRequired,
   poster: PropTypes.string.isRequired,
+  genres: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 export default Movie;

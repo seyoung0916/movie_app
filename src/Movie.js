@@ -9,7 +9,7 @@ function Movie({ year, title, summary, poster, genres }) {
       <div className="movie__data">
         <h3 className="movie__title">{title}</h3>
         <h3 className="movie__year">{year}</h3>
-        <ul className="genres">
+        <ul className="movie__genres">
           {genres.map((
             genre,
             index // key값을 id 대신 index로 할당 (id값이 없어서)
